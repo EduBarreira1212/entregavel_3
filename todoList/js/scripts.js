@@ -1,32 +1,68 @@
 // Clase
 
 class ToDo {
-
+ constructor(texto, prioridade){
+  this.Texto = texto;
+  this.Prioridade = prioridade;
+  this.Feito = false;
+ }
 }
 
 // Array
-
+const arrayToDo = [];
 
 //funções projeto
 
-function CriarToDo() {
-
+function CriarToDo(texto, prioridade, arrayToDo) {
+  let toDo = new ToDo(texto,prioridade);
+  let existe = arrayToDo.some(toDoObject => toDoObject == toDo);
+  if(existe == false){
+    arrayToDo.push(toDo);
+    return toDo;
+  }
 }
 
-function AtualizarToDo() {
-
+function AtualizarToDo(textAntigo, textoNovo, arrayToDo) {
+  let toDo = arrayToDo.find(toDo => toDo.Texto == textAntigo);
+  if(toDo == undefined){
+    return false;
+  }else{
+    toDo.Texto = textoNovo;
+    return true;
+  }
 }
 
-function ConcluirToDo() {
-
+function ConcluirToDo(arrayToDo, texto) {
+  let toDo = arrayToDo.find(toDo => toDo.Texto == texto);
+  if(toDo == undefined){
+    return false;
+  }else{
+    if(toDo.Feito == false){
+      toDo.Feito = true;
+    }else{
+      toDo.Feito = false;
+    }
+    return true;
+  }
 }
 
-function ExcluirToDo() {
-
+function ExcluirToDo(arrayToDo, texto) {
+  let toDo = arrayToDo.find(toDo => toDo.Texto == texto);
+  if(toDo == undefined){
+    return false;
+  }else{
+    arrayToDo.splice(toDo,1);
+    return true;
+  }
 }
 
-function PesquisarToDo() {
- 
+function PesquisarToDo(arrayToDo, texto) {
+  let toDos = arrayToDo.filter(toDo => toDo.Texto == texto);
+  if(toDos.lenght > 0){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 function OrdenarCrescente() {
