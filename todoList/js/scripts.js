@@ -58,7 +58,7 @@ function ExcluirToDo(arrayToDo, texto) {
 }
 
 function PesquisarToDo(arrayToDo, texto) {
-  let toDos = arrayToDo.filter(toDo => toDo.Texto == texto);
+ let toDos = arrayToDo.filter(toDo => toDo.Texto == texto);
   if(toDos.lenght > 0){
     return true;
   }else{
@@ -66,11 +66,13 @@ function PesquisarToDo(arrayToDo, texto) {
   }
 }
 
-function OrdenarCrescente() {
-  
+function OrdenarCrescente(arrayToDo) {
+  arrayToDo.sort((a,b) => a.Prioridade - b.Prioridade);
+  return arrayOrdenado;
 }
-function OrdenarDecrescente() {
-  
+function OrdenarDecrescente(arrayToDo) {
+  arrayToDo.sort((a,b) => b.Prioridade - a.Prioridade);
+  return arrayToDo;
 }
 
 // Seleção de elementos
