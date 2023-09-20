@@ -9,7 +9,7 @@ class ToDo {
 }
 
 // Array
-const arrayToDo = [];
+const arrayTodos = [];
 
 //funções projeto
 
@@ -48,10 +48,11 @@ function ConcluirToDo(arrayToDo, texto) {
 
 function ExcluirToDo(arrayToDo, texto) {
   let toDo = arrayToDo.find(toDo => toDo.Texto == texto);
+  let index = arrayToDo.indexOf(toDo)
   if(toDo == undefined){
     return false;
   }else{
-    arrayToDo.splice(toDo,1);
+    arrayToDo.splice(index,1);
     return true;
   }
 }
