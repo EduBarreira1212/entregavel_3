@@ -9,17 +9,17 @@ class ToDo {
 }
 
 // Array
-const arrayTodos = [];
+let arrayTodos = [];
 
 //funções projeto
 
 function CriarToDo(texto, prioridade, arrayToDo) {
   let toDo = new ToDo(texto,prioridade);
-  let existe = arrayToDo.some(toDoObject => toDoObject == toDo);
+  let existe = arrayToDo.some(toDoObject => toDoObject.Texto == texto);
   if(existe == false){
     arrayToDo.push(toDo);
-    return toDo;
   }
+  return toDo;
 }
 
 function AtualizarToDo(textAntigo, textoNovo, arrayToDo) {
@@ -59,20 +59,20 @@ function ExcluirToDo(arrayToDo, texto) {
 
 function PesquisarToDo(arrayToDo, texto) {
  let toDos = arrayToDo.filter(toDo => toDo.Texto == texto);
-  if(toDos.lenght > 0){
+  if(toDos.length > 0){
     return true;
   }else{
     return false;
   }
 }
 
-function OrdenarCrescente(arrayToDo) {
-  arrayToDo.sort((a,b) => a.Prioridade - b.Prioridade);
+function OrdenarCrescente(array) {
+  let arrayOrdenado = [...array].sort((a,b) => a.Prioridade - b.Prioridade);
   return arrayOrdenado;
 }
-function OrdenarDecrescente(arrayToDo) {
-  arrayToDo.sort((a,b) => b.Prioridade - a.Prioridade);
-  return arrayToDo;
+function OrdenarDecrescente(array) {
+  let arrayOrdenado = [...array].sort((a,b) => b.Prioridade - a.Prioridade);
+  return arrayOrdenado;
 }
 
 // Seleção de elementos
